@@ -1,0 +1,8 @@
+numpy>=1.20.0
+scipy>=1.7.0
+h5py>=3.1.0
+matplotlib>=3.4.0
+tensorflow
+seaborn
+scikit-learn
+imageio

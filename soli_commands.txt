@@ -1,0 +1,10 @@
+if exist %h\projects\DATA\Save move %h\projects\DATA\Save %h\projects\DATA\Save.%t
+mkdir %h\projects\DATA\Save
+copy %s %h\projects\DATA\Save
+python mmwave_to_soli.py --cfg .\soli_profile.cfg --bin %s --out %b.h5 --label 12 --frames 40 --log %h\projects\DATA\Save\Preprocessing.txt
+copy %b.h5 %h\projects\DATA\Save
+python .\rdgifh5.py %b.h5 --cleanup
+start screenshots/%b.gif
+copy screenshots\%b.gif %h\projects\DATA\Save
+python soli_predict.py --model_path "%h\Downloads\MODELS\soli_model.keras" --h5_file %b.h5 --log %h\projects\DATA\Save\SoliPrediction.txt
+dir %h\projects\DATA\Save
